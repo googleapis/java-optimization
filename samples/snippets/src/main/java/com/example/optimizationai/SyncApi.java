@@ -42,6 +42,8 @@ public class SyncApi {
 
   public static void callSyncApi(String projectParent, String modelPath) throws Exception {
     int timeoutSeconds = 100;
+    System.out.println("test absolute model path");
+    System.out.println(new File(".").getAbsolutePath());
     InputStream modelInputstream = new FileInputStream(modelPath);
     Reader modelInputStreamReader = new InputStreamReader(modelInputstream);
     OptimizeToursRequest.Builder requestBuilder =
