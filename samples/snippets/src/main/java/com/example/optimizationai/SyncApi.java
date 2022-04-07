@@ -23,6 +23,7 @@ import com.google.cloud.optimization.v1.OptimizeToursRequest;
 import com.google.cloud.optimization.v1.OptimizeToursResponse;
 import com.google.protobuf.Duration;
 import com.google.protobuf.TextFormat;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
