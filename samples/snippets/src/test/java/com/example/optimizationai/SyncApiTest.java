@@ -28,7 +28,7 @@ import org.junit.Test;
 public class SyncApiTest {
   private static final String PROJECT_ID = System.getenv("GOOGLE_CLOUD_PROJECT");
   private static final String PROJECT_PARENT = String.format("projects/%s", PROJECT_ID);
-  private static final String MODEL_PATH = "sync_request.textproto";
+  private static final String MODEL_PATH = "resources/sync_request.textproto";
 
   private ByteArrayOutputStream bout;
   private PrintStream out;
