@@ -23,7 +23,6 @@ import com.google.cloud.optimization.v1.OptimizeToursRequest;
 import com.google.cloud.optimization.v1.OptimizeToursResponse;
 import com.google.protobuf.Duration;
 import com.google.protobuf.TextFormat;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -31,7 +30,7 @@ import java.io.Reader;
 
 /**
  * This is an example to send a request to Cloud Fleet Routing synchronous API via Java API Client.
- * A sample sync_request.textproto file can be found in the resources folder.
+ * The sample sync_request.textproto file can be found in the resources folder.
  */
 public class SyncApi {
   public static void callSyncApi() throws Exception {
@@ -43,8 +42,6 @@ public class SyncApi {
 
   public static void callSyncApi(String projectParent, String modelPath) throws Exception {
     int timeoutSeconds = 100;
-    System.out.println("test absolute model path");
-    System.out.println(new File(".").getAbsolutePath());
     InputStream modelInputstream = new FileInputStream(modelPath);
     Reader modelInputStreamReader = new InputStreamReader(modelInputstream);
     OptimizeToursRequest.Builder requestBuilder =
