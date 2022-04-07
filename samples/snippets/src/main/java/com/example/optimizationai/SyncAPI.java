@@ -35,13 +35,13 @@ import java.io.Reader;
 public class SyncApi {
   public static void callSyncApi() throws Exception {
     // TODO(developer): Replace these variables before running the sample.
-    private static final String projectParent = "projects/{YOUR_GCP_PROJECT_ID}";
-    private static final String modelPath = "YOUR_MODEL_PATH";
+    String projectParent = "projects/{YOUR_GCP_PROJECT_ID}";
+    String modelPath = "YOUR_MODEL_PATH";
     callSyncAPI(projectParent, modelPath);
   }
 
   public static void callSyncApi(String projectParent, String modelPath) throws Exception {
-    private static int timeoutSeconds = 100;
+    int timeoutSeconds = 100;
     InputStream modelInputstream = new FileInputStream(modelPath);
     Reader modelInputStreamReader = new InputStreamReader(modelInputstream);
     OptimizeToursRequest.Builder requestBuilder =
