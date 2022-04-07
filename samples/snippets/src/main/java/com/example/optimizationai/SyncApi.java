@@ -37,7 +37,7 @@ public class SyncApi {
     // TODO(developer): Replace these variables before running the sample.
     String projectParent = "projects/{YOUR_GCP_PROJECT_ID}";
     String modelPath = "YOUR_MODEL_PATH";
-    callSyncAPI(projectParent, modelPath);
+    callSyncApi(projectParent, modelPath);
   }
 
   public static void callSyncApi(String projectParent, String modelPath) throws Exception {
