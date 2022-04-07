@@ -11,6 +11,10 @@ import org.junit.Test;
 
 /** Tests for SyncAPI sample. */
 public class SyncAPITest {
+  private static final String PROJECT_ID = System.getenv("GOOGLE_CLOUD_PROJECT");
+  String PROJECT_PARENT = String.format("projects/%s", PROJECT_ID);
+  private static final String MODEL_PATH = "resources/sync_request.textproto";
+
   private ByteArrayOutputStream bout;
   private PrintStream out;
   private PrintStream originalPrintStream;
@@ -31,7 +35,7 @@ public class SyncAPITest {
 
   @Test
   public void testSyncAPI() throws Exception {
-    SyncAPI.callSyncAPI();
+    SyncAPI.callSyncAPI(PROJECT_PARENT, MODEL_PATH);
     String got = bout.toString();
     assertThat(got).contains("routes");
   }

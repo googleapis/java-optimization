@@ -17,13 +17,16 @@ import java.io.Reader;
  * A sample sync_request.textproto file can be found in the resources folder.
  */
 public class SyncAPI {
-  private static int TIMEOUT_SECONDS = 100;
-  // TODO(developer): Replace these variables before running the sample.
-  private static final String PROJECT_PARENT = "projects/{YOUR_GCP_PROJECT_ID}";
-  private static final String MODEL_PATH = "request.textproto";
+  public static void callSyncAPI() throws Exception {
+    // TODO(developer): Replace these variables before running the sample.
+    private static final String PROJECT_PARENT = "projects/{YOUR_GCP_PROJECT_ID}";
+    private static final String MODEL_PATH = "YOUR_MODEL_PATH";
+    callSyncAPI(PROJECT_PARENT, MODEL_PATH);
+  }
 
-  public static void callSyncAPI(String[] args) throws Exception {
-    InputStream modelInputstream = new FileInputStream(MODEL_PATH);
+  public static void callSyncAPI(String projectId, String modelPath) throws Exception {
+    private static int TIMEOUT_SECONDS = 100;
+    InputStream modelInputstream = new FileInputStream(modelPath);
     Reader modelInputStreamReader = new InputStreamReader(modelInputstream);
     OptimizeToursRequest.Builder requestBuilder =
         OptimizeToursRequest.newBuilder()
