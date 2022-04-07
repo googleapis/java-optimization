@@ -19,6 +19,7 @@ package com.example.optimizationai;
 import static com.google.common.truth.Truth.assertThat;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.PrintStream;
 import org.junit.After;
 import org.junit.Before;
@@ -50,6 +51,9 @@ public class SyncApiTest {
 
   @Test
   public void testSyncApi() throws Exception {
+    System.out.println("test AbsolutePath: ");
+    System.out.println(new File(".").getAbsolutePath());
+
     SyncApi.callSyncApi(PROJECT_PARENT, MODEL_PATH);
     String got = bout.toString();
     assertThat(got).contains("routes");
