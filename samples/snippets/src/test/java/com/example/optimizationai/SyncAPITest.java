@@ -16,7 +16,6 @@
 
 package com.example.optimizationai;
 
-// [START cloudoptimization_sync_api]
 import static com.google.common.truth.Truth.assertThat;
 
 import java.io.ByteArrayOutputStream;
@@ -56,4 +55,3 @@ public class SyncApiTest {
     assertThat(got).contains("routes");
   }
 }
-// [END cloudoptimization_sync_api]
