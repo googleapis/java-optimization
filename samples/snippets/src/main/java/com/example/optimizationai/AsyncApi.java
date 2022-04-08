@@ -48,14 +48,6 @@ public class AsyncApi {
   }
 
   public static void callAsyncApi(String projectParent, String inputUri, String outputUri) throws Exception {
-    // InputStream modelInputstream = new FileInputStream(requestPath);
-    // Reader modelInputStreamReader = new InputStreamReader(modelInputstream);
-    
-    // BatchOptimizeToursRequest.Builder requestBuilder =
-    //     BatchOptimizeToursRequest.newBuilder().setParent(projectParent);
-
-    // TextFormat.getParser().merge(modelInputStreamReader, requestBuilder);
-    
     GcsSource gcsSource = GcsSource.newBuilder().setUri(inputUri).build();
     InputConfig inputConfig = InputConfig.newBuilder().setGcsSource(gcsSource).setDataFormat('JSON').build();
     GcsDestination gcsDestination = GcsDestination.newBuilder().setUri(outputUri).build();
@@ -65,8 +57,7 @@ public class AsyncApi {
     BatchOptimizeToursRequest request = BatchOptimizeToursRequest.newBuilder().setParent(projectParent).addModelConfigs(asyncModelConfig).build();
 
     FleetRoutingClient fleetRoutingClient = FleetRoutingClient.create();
-    OperationFuture<BatchOptimizeToursResponse, AsyncModelMetadata> response =
-    fleetRoutingClient.batchOptimizeToursAsync(request);
+    OperationFuture<BatchOptimizeToursResponse, AsyncModelMetadata> response = fleetRoutingClient.batchOptimizeToursAsync(request);
     System.out.format("the response name: %s\n", response.getInitialFuture().get().getName());
 
     // Block to wait for the job to finish.

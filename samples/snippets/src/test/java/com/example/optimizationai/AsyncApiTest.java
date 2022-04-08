@@ -33,11 +33,9 @@ import org.junit.Test;
 public class AsyncApiTest {
   private static final String PROJECT_ID = System.getenv("GOOGLE_CLOUD_PROJECT");
   private static final String PROJECT_PARENT = String.format("projects/%s", PROJECT_ID);
-  private static final String REQUEST_PATH = "resources/async_request.textproto";
   private static final String BUCKET_NAME = String.format("optimization-ai-output-test-%s", UUID.randomUUID());
   private static final String INPUT_URI = "gs://cloud-samples-data/optimization-ai/async_request_model.json";
-  private static final String OUTPUT_PREFIX = 'code_snippets_test_output_'
-  private static final String BATCH_OUTPUT_URI_PREFIX = String.format("gs://%s/%s", BUCKET_NAME, OUTPUT_PREFIX);
+  private static final String BATCH_OUTPUT_URI = String.format("gs://%s/code_snippets_test_output.json", BUCKET_NAME);
   
   private ByteArrayOutputStream bout;
   private PrintStream out;
@@ -74,7 +72,7 @@ public class AsyncApiTest {
 
   @Test
   public void testAsyncApi() throws Exception {
-    AsyncApi.callAsyncApi(PROJECT_PARENT, INPUT_URI, BATCH_OUTPUT_URI_PREFIX);
+    AsyncApi.callAsyncApi(PROJECT_PARENT, INPUT_URI, BATCH_OUTPUT_URI);
     String got = bout.toString();
     assertThat(got).contains("Job");
   }
