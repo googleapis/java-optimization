@@ -19,12 +19,14 @@ package com.optimizationai;
 // [START cloudoptimization_async_api]
 import static com.google.common.truth.Truth.assertThat;
 
+import com.google.api.gax.paging.Page;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BucketInfo;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.UUID;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,9 +35,12 @@ import org.junit.Test;
 public class AsyncApiTest {
   private static final String PROJECT_ID = System.getenv("GOOGLE_CLOUD_PROJECT");
   private static final String PROJECT_PARENT = String.format("projects/%s", PROJECT_ID);
-  private static final String BUCKET_NAME = String.format("optimization-ai-output-test-%s", UUID.randomUUID());
-  private static final String INPUT_URI = "gs://cloud-samples-data/optimization-ai/async_request_model.json";
-  private static final String BATCH_OUTPUT_URI = String.format("gs://%s/code_snippets_test_output.json", BUCKET_NAME);
+  private static final String BUCKET_NAME = 
+  String.format("optimization-ai-output-test-%s", UUID.randomUUID());
+  private static final String INPUT_URI = 
+  "gs://cloud-samples-data/optimization-ai/async_request_model.json";
+  private static final String BATCH_OUTPUT_URI = 
+  String.format("gs://%s/code_snippets_test_output.json", BUCKET_NAME);
   
   private ByteArrayOutputStream bout;
   private PrintStream out;
@@ -46,8 +51,7 @@ public class AsyncApiTest {
     Page<Blob> blobs =
         storage.list(
             BUCKET_NAME,
-            Storage.BlobListOption.currentDirectory(),
-            Storage.BlobListOption.prefix(OUTPUT_PREFIX));
+            Storage.BlobListOption.currentDirectory());
 
     deleteDirectory(storage, blobs);
   }
