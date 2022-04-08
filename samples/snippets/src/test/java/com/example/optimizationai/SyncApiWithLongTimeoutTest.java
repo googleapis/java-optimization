@@ -50,7 +50,7 @@ public class SyncApiWithLongTimeoutTest {
 
   @Test
   public void testSyncApi() throws Exception {
-    SyncApi.callSyncApi(PROJECT_PARENT, MODEL_PATH);
+    SyncApiWithLongTimeout.longTimeout(PROJECT_PARENT, MODEL_PATH);
     String got = bout.toString();
     assertThat(got).contains("routes");
   }

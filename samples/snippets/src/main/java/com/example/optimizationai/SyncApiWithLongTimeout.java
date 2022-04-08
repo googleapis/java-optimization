@@ -13,12 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.google.cloud;
 
 // [START cloudoptimization_long_timeout]
 
-import com.google.cloud.optimization.v1.FleetRoutingSettings;
 import com.google.cloud.optimization.v1.FleetRoutingClient;
+import com.google.cloud.optimization.v1.FleetRoutingSettings;
 import com.google.cloud.optimization.v1.OptimizeToursRequest;
 import com.google.cloud.optimization.v1.OptimizeToursResponse;
 import com.google.protobuf.Duration;
@@ -32,15 +33,16 @@ import java.io.Reader;
  * This is an example to send a request to Cloud Fleet Routing synchronous API via Java API Client.
  */
 public class SyncApiWithLongTimeout {
-  public static void SyncApiWithLongTimeout() throws Exception {
+  public static void longTimeout() throws Exception {
     // TODO(developer): Replace these variables before running the sample.
     String projectParent = "projects/{YOUR_GCP_PROJECT_ID}";
     String modelPath = "YOUR_MODEL_PATH";
-    SyncApiWithLongTimeout(projectParent, modelPath);
+    longTimeout(projectParent, modelPath);
   }
   private static final String MODEL_PATH = "request.textproto";
 
-  public static void SyncApiWithLongTimeout(String projectParent, String modelPath) throws Exception {
+  public static void longTimeout(
+      String projectParent, String modelPath) throws Exception {
     int timeoutSeconds = 100;
     InputStream modelInputstream = new FileInputStream(modelPath);
     Reader modelInputStreamReader = new InputStreamReader(modelInputstream);
@@ -55,10 +57,10 @@ public class SyncApiWithLongTimeout {
                 FleetRoutingSettings
                 .newBuilder()
                         .setTransportChannelProvider(
-                                FleetRoutingSettings.
-                                        defaultGrpcTransportProviderBuilder()
-                                        .setKeepAliveTime(
-                                                org.threeten.bp.Duration.ofSeconds(300)).build()).build());
+                                FleetRoutingSettings
+                                        .defaultGrpcTransportProviderBuilder()
+                                        .setKeepAliveTime(org.threeten.bp.Duration.ofSeconds(300))
+                                        .build()).build());
     OptimizeToursResponse response = fleetRoutingClientClient.optimizeTours(requestBuilder.build());
     System.out.println(response.toString());
   }
