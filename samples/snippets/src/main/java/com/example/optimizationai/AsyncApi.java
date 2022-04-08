@@ -45,7 +45,7 @@ public class AsyncApi {
     String projectParent = "projects/{YOUR_GCP_PROJECT_ID}";
     String inputUri = "gs://YOUR_GCS_PATH";
     String outputUri = "gs://YOUR_SOLUTION_PATH";
-    callAsyncApi(projectParent, requestPath, outputUri);
+    callAsyncApi(projectParent, inputUri, outputUri);
   }
 
   public static void callAsyncApi(String projectParent, String inputUri, String outputUri) throws Exception {
