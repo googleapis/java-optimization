@@ -48,36 +48,38 @@ public class AsyncApi {
     callAsyncApi(projectParent, inputUri, outputUri);
   }
 
-  public static void callAsyncApi(String projectParent, String inputUri, String
-   outputUri) throws Exception {
+  public static void callAsyncApi(
+    String projectParent,
+    String inputUri, 
+    String outputUri) throws Exception {
     GcsSource gcsSource = GcsSource.newBuilder().setUri(inputUri).build();
     InputConfig inputConfig = 
-    InputConfig.newBuilder()
-    .setGcsSource(gcsSource)
-    .setDataFormat(DataFormat.JSON)
-    .build();
+      InputConfig.newBuilder()
+        .setGcsSource(gcsSource)
+        .setDataFormat(DataFormat.JSON)
+        .build();
     GcsDestination gcsDestination = 
-    GcsDestination.newBuilder().setUri(outputUri).build();
+      GcsDestination.newBuilder().setUri(outputUri).build();
     OutputConfig outputConfig = 
-    OutputConfig.newBuilder()
-    .setGcsDestination(gcsDestination)
-    .setDataFormat(DataFormat.JSON)
-    .build();
+      OutputConfig.newBuilder()
+        .setGcsDestination(gcsDestination)
+        .setDataFormat(DataFormat.JSON)
+        .build();
 
     AsyncModelConfig asyncModelConfig = 
-    AsyncModelConfig.newBuilder()
-    .setInputConfig(inputConfig)
-    .setOutputConfig(outputConfig)
-    .build();
+      AsyncModelConfig.newBuilder()
+        .setInputConfig(inputConfig)
+        .setOutputConfig(outputConfig)
+        .build();
     BatchOptimizeToursRequest request = 
-    BatchOptimizeToursRequest.newBuilder()
-    .setParent(projectParent)
-    .addModelConfigs(asyncModelConfig)
-    .build();
+      BatchOptimizeToursRequest.newBuilder()
+        .setParent(projectParent)
+        .addModelConfigs(asyncModelConfig)
+        .build();
 
     FleetRoutingClient fleetRoutingClient = FleetRoutingClient.create();
     OperationFuture<BatchOptimizeToursResponse, AsyncModelMetadata> response = 
-    fleetRoutingClient.batchOptimizeToursAsync(request);
+      fleetRoutingClient.batchOptimizeToursAsync(request);
     System.out.format("the response name: %s\n", response.getInitialFuture().get().getName());
 
     // Block to wait for the job to finish.

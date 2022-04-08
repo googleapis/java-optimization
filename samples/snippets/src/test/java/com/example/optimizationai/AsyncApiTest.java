@@ -36,11 +36,11 @@ public class AsyncApiTest {
   private static final String PROJECT_ID = System.getenv("GOOGLE_CLOUD_PROJECT");
   private static final String PROJECT_PARENT = String.format("projects/%s", PROJECT_ID);
   private static final String BUCKET_NAME = 
-  String.format("optimization-ai-output-test-%s", UUID.randomUUID());
+    String.format("optimization-ai-output-test-%s", UUID.randomUUID());
   private static final String INPUT_URI = 
-  "gs://cloud-samples-data/optimization-ai/async_request_model.json";
+    "gs://cloud-samples-data/optimization-ai/async_request_model.json";
   private static final String BATCH_OUTPUT_URI = 
-  String.format("gs://%s/code_snippets_test_output.json", BUCKET_NAME);
+    String.format("gs://%s/code_snippets_test_output.json", BUCKET_NAME);
   
   private ByteArrayOutputStream bout;
   private PrintStream out;
@@ -54,6 +54,20 @@ public class AsyncApiTest {
             Storage.BlobListOption.currentDirectory());
 
     deleteDirectory(storage, blobs);
+  }
+
+  private static void deleteDirectory(Storage storage, Page<Blob> blobs) {
+    for (Blob blob : blobs.iterateAll()) {
+      if (!blob.delete()) {
+        Page<Blob> subBlobs =
+            storage.list(
+                BUCKET_NAME,
+                Storage.BlobListOption.currentDirectory(),
+                Storage.BlobListOption.prefix(blob.getName()));
+
+        deleteDirectory(storage, subBlobs);
+      }
+    }
   }
 
   @Before
