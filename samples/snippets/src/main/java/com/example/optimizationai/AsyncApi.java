@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
- package com.optimizationai;
+package com.optimizationai;
 
 // [START cloudoptimization_async_api]
 import com.google.api.gax.longrunning.OperationFuture;
 import com.google.cloud.optimization.v1.AsyncModelMetadata;
 import com.google.cloud.optimization.v1.BatchOptimizeToursRequest;
-import com.google.cloud.optimization.v1.BatchOptimizeToursResponse;
-import com.google.cloud.optimization.v1.FleetRoutingClient;
-import com.google.cloud.optimization.v1.InputConfig;
-import com.google.cloud.optimization.v1.GcsSource;
-import com.google.cloud.optimization.v1.OutputConfig;
-import com.google.cloud.optimization.v1.GcsDestination;
 import com.google.cloud.optimization.v1.BatchOptimizeToursRequest.AsyncModelConfig;
+import com.google.cloud.optimization.v1.BatchOptimizeToursResponse;
 import com.google.cloud.optimization.v1.DataFormat;
+import com.google.cloud.optimization.v1.FleetRoutingClient;
+import com.google.cloud.optimization.v1.GcsDestination;
+import com.google.cloud.optimization.v1.GcsSource;
+import com.google.cloud.optimization.v1.InputConfig;
+import com.google.cloud.optimization.v1.OutputConfig;
 import com.google.protobuf.TextFormat;
 import java.io.FileInputStream;
 import java.io.InputStream;
