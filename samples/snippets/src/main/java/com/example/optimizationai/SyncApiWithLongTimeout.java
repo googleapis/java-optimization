@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.cloud;
+package com.example.optimizationai;
 
 // [START cloudoptimization_long_timeout]
 
