@@ -30,7 +30,7 @@ import java.io.Reader;
 
 /**
  * This is an example to send a request to Cloud Fleet Routing synchronous API via Java API Client.
- * The sample sync_request.textproto file can be found in the resources folder.
+ * A sample sync_request.textproto file can be found in the resources folder.
  */
 public class SyncApi {
   public static void callSyncApi() throws Exception {
