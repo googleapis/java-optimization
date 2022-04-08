@@ -64,7 +64,7 @@ public class AsyncApi {
     response.getPollingFuture().get();
     if (response.getMetadata().get().getState() == AsyncModelMetadata.State.SUCCEEDED) {
       // Code to do your stuff
-      System.out.println("Job finished successfully.")
+      System.out.println("Job finished successfully.");
     } else {
       System.out.println(
           "Job failed with message:" + response.getPollingFuture().get().getErrorMessage());
