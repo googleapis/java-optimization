@@ -28,11 +28,6 @@ import com.google.cloud.optimization.v1.GcsDestination;
 import com.google.cloud.optimization.v1.GcsSource;
 import com.google.cloud.optimization.v1.InputConfig;
 import com.google.cloud.optimization.v1.OutputConfig;
-import com.google.protobuf.TextFormat;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 
 /**
  * This is an example to send a request to Cloud Fleet Routing asynchronous API via Java API Client.
@@ -48,37 +43,31 @@ public class AsyncApi {
     callAsyncApi(projectParent, inputUri, outputUri);
   }
 
-  public static void callAsyncApi(
-      String projectParent,
-      String inputUri, 
-      String outputUri) throws Exception {
+  public static void callAsyncApi(String projectParent, String inputUri, String outputUri)
+      throws Exception {
     GcsSource gcsSource = GcsSource.newBuilder().setUri(inputUri).build();
-    InputConfig inputConfig = 
-        InputConfig.newBuilder()
-          .setGcsSource(gcsSource)
-          .setDataFormat(DataFormat.JSON)
-          .build();
-    GcsDestination gcsDestination = 
-        GcsDestination.newBuilder().setUri(outputUri).build();
-    OutputConfig outputConfig = 
+    InputConfig inputConfig =
+        InputConfig.newBuilder().setGcsSource(gcsSource).setDataFormat(DataFormat.JSON).build();
+    GcsDestination gcsDestination = GcsDestination.newBuilder().setUri(outputUri).build();
+    OutputConfig outputConfig =
         OutputConfig.newBuilder()
-          .setGcsDestination(gcsDestination)
-          .setDataFormat(DataFormat.JSON)
-          .build();
+            .setGcsDestination(gcsDestination)
+            .setDataFormat(DataFormat.JSON)
+            .build();
 
-    AsyncModelConfig asyncModelConfig = 
+    AsyncModelConfig asyncModelConfig =
         AsyncModelConfig.newBuilder()
-          .setInputConfig(inputConfig)
-          .setOutputConfig(outputConfig)
-          .build();
-    BatchOptimizeToursRequest request = 
+            .setInputConfig(inputConfig)
+            .setOutputConfig(outputConfig)
+            .build();
+    BatchOptimizeToursRequest request =
         BatchOptimizeToursRequest.newBuilder()
-          .setParent(projectParent)
-          .addModelConfigs(asyncModelConfig)
-          .build();
+            .setParent(projectParent)
+            .addModelConfigs(asyncModelConfig)
+            .build();
 
     FleetRoutingClient fleetRoutingClient = FleetRoutingClient.create();
-    OperationFuture<BatchOptimizeToursResponse, AsyncModelMetadata> response = 
+    OperationFuture<BatchOptimizeToursResponse, AsyncModelMetadata> response =
         fleetRoutingClient.batchOptimizeToursAsync(request);
     System.out.format("the response name: %s\n", response.getInitialFuture().get().getName());
 

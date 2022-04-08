@@ -35,23 +35,20 @@ import org.junit.Test;
 public class AsyncApiTest {
   private static final String PROJECT_ID = System.getenv("GOOGLE_CLOUD_PROJECT");
   private static final String PROJECT_PARENT = String.format("projects/%s", PROJECT_ID);
-  private static final String BUCKET_NAME = 
+  private static final String BUCKET_NAME =
       String.format("optimizationai-test-%s", UUID.randomUUID());
-  private static final String INPUT_URI = 
+  private static final String INPUT_URI =
       "gs://cloud-samples-data/optimization-ai/async_request_model.json";
-  private static final String BATCH_OUTPUT_URI = 
+  private static final String BATCH_OUTPUT_URI =
       String.format("gs://%s/code_snippets_test_output.json", BUCKET_NAME);
-  
+
   private ByteArrayOutputStream bout;
   private PrintStream out;
   private PrintStream originalPrintStream;
 
   private static void cleanUpBucket() {
     Storage storage = StorageOptions.getDefaultInstance().getService();
-    Page<Blob> blobs =
-        storage.list(
-            BUCKET_NAME,
-            Storage.BlobListOption.currentDirectory());
+    Page<Blob> blobs = storage.list(BUCKET_NAME, Storage.BlobListOption.currentDirectory());
 
     deleteDirectory(storage, blobs);
   }
