@@ -16,7 +16,6 @@
 
 package com.optimizationai;
 
-// [START cloudoptimization_async_api]
 import static com.google.common.truth.Truth.assertThat;
 
 import com.google.api.gax.paging.Page;
@@ -92,4 +91,3 @@ public class AsyncApiTest {
     assertThat(got).contains("Job");
   }
 }
-// [END cloudoptimization_async_api]
