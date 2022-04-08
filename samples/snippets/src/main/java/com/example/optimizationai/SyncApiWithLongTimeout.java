@@ -39,7 +39,6 @@ public class SyncApiWithLongTimeout {
     String modelPath = "YOUR_MODEL_PATH";
     longTimeout(projectParent, modelPath);
   }
-  private static final String MODEL_PATH = "request.textproto";
 
   public static void longTimeout(
       String projectParent, String modelPath) throws Exception {
