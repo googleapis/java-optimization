@@ -40,8 +40,7 @@ public class SyncApiWithLongTimeout {
     longTimeout(projectParent, modelPath);
   }
 
-  public static void longTimeout(
-      String projectParent, String modelPath) throws Exception {
+  public static void longTimeout(String projectParent, String modelPath) throws Exception {
     int timeoutSeconds = 100;
     InputStream modelInputstream = new FileInputStream(modelPath);
     Reader modelInputStreamReader = new InputStreamReader(modelInputstream);
@@ -50,16 +49,16 @@ public class SyncApiWithLongTimeout {
             .setTimeout(Duration.newBuilder().setSeconds(timeoutSeconds).build())
             .setParent(projectParent);
     TextFormat.getParser().merge(modelInputStreamReader, requestBuilder);
-    
+
     // Checks the gRPC connection every 5 mins and keeps it alive.
-    FleetRoutingClient fleetRoutingClientClient = FleetRoutingClient.create(
-                FleetRoutingSettings
-                .newBuilder()
-                        .setTransportChannelProvider(
-                                FleetRoutingSettings
-                                        .defaultGrpcTransportProviderBuilder()
-                                        .setKeepAliveTime(org.threeten.bp.Duration.ofSeconds(300))
-                                        .build()).build());
+    FleetRoutingClient fleetRoutingClientClient =
+        FleetRoutingClient.create(
+            FleetRoutingSettings.newBuilder()
+                .setTransportChannelProvider(
+                    FleetRoutingSettings.defaultGrpcTransportProviderBuilder()
+                        .setKeepAliveTime(org.threeten.bp.Duration.ofSeconds(300))
+                        .build())
+                .build());
     OptimizeToursResponse response = fleetRoutingClientClient.optimizeTours(requestBuilder.build());
     System.out.println(response.toString());
   }
