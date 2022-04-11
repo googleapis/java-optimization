@@ -18,6 +18,8 @@ package com.example.optimizationai;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import com.google.api.gax.longrunning.OperationFuture;
+import com.google.cloud.optimization.v1.AsyncModelMetadata;
 import com.google.cloud.optimization.v1.BatchOptimizeToursRequest;
 import com.google.cloud.optimization.v1.BatchOptimizeToursRequest.AsyncModelConfig;
 import com.google.cloud.optimization.v1.BatchOptimizeToursResponse;
@@ -59,7 +61,8 @@ public class GetOperationTest {
         .setParent(PROJECT_PARENT)
         .setTimeout(Duration.newBuilder().build())
         .build();
-    BatchOptimizeToursResponse response = fleetRoutingClient.batchOptimizeTours(request);
+    OperationFuture<BatchOptimizeToursResponse, AsyncModelMetadata>  response = 
+        fleetRoutingClient.batchOptimizeTours(request);
 
     GetOperation.getOperation(response.getInitialFuture().get().getName());
     String got = bout.toString();
