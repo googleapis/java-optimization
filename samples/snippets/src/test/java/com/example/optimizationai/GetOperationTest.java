@@ -54,11 +54,11 @@ public class GetOperationTest {
 
   @Test
   public void testSyncApi() throws Exception {
-    FleetRoutingClient fleetRoutingClient = FleetRoutingClient.create()
+    FleetRoutingClient fleetRoutingClient = FleetRoutingClient.create();
     BatchOptimizeToursRequest request = BatchOptimizeToursRequest.newBuilder()
-            .setParent(PROJECT_PARENT)
-            .setTimeout(Duration.newBuilder().build())
-            .build();
+        .setParent(PROJECT_PARENT)
+        .setTimeout(Duration.newBuilder().build())
+        .build();
     BatchOptimizeToursResponse response = fleetRoutingClient.batchOptimizeTours(request);
 
     GetOperation.getOperation(response.getInitialFuture().get().getName());
