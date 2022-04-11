@@ -26,7 +26,7 @@ class GetOperation {
   static void getOperation() throws IOException {
     // TODO(developer): Replace these variables before running the sample.
     String operationFullId = "projects/[projectId]/operations/[operationId]";
-    getOperationStatus(operationFullId);
+    getOperation(operationFullId);
   }
 
   // Get the status of an operation
