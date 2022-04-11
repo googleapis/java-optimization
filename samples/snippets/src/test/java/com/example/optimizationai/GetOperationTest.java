@@ -16,6 +16,9 @@
 
 package com.example.optimizationai;
 
+import com.google.cloud.optimization.v1.BatchOptimizeToursRequest;
+import com.google.cloud.optimization.v1.BatchOptimizeToursRequest.AsyncModelConfig;
+import com.google.cloud.optimization.v1.BatchOptimizeToursResponse;
 import com.google.cloud.optimization.v1.FleetRoutingClient;
 import static com.google.common.truth.Truth.assertThat;
 import com.google.protobuf.Duration;
@@ -52,12 +55,12 @@ public class GetOperationTest {
   @Test
   public void testSyncApi() throws Exception {
     FleetRoutingClient fleetRoutingClient = FleetRoutingClient.create()
-    OptimizeToursRequest request =
-        OptimizeToursRequest.newBuilder()
+    BatchOptimizeToursRequest request =
+        BatchOptimizeToursRequest.newBuilder()
             .setParent(PROJECT_PARENT)
             .setTimeout(Duration.newBuilder().build())
             .build();
-    OptimizeToursResponse response = fleetRoutingClient.batchOptimizeTours(request);
+    BatchOptimizeToursResponse response = fleetRoutingClient.batchOptimizeTours(request);
 
     GetOperation.getOperation(response.getInitialFuture().get().getName());
     String got = bout.toString();
