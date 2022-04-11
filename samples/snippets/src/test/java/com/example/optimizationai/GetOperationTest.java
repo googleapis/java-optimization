@@ -59,10 +59,9 @@ public class GetOperationTest {
     FleetRoutingClient fleetRoutingClient = FleetRoutingClient.create();
     BatchOptimizeToursRequest request = BatchOptimizeToursRequest.newBuilder()
         .setParent(PROJECT_PARENT)
-        .setTimeout(Duration.newBuilder().build())
         .build();
     OperationFuture<BatchOptimizeToursResponse, AsyncModelMetadata>  response = 
-        fleetRoutingClient.batchOptimizeTours(request);
+        fleetRoutingClient.batchOptimizeToursAsync(request);
 
     GetOperation.getOperation(response.getInitialFuture().get().getName());
     String got = bout.toString();
