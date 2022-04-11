@@ -16,13 +16,13 @@
 
 package com.example.optimizationai;
 
+import static com.google.common.truth.Truth.assertThat;
+
 import com.google.cloud.optimization.v1.BatchOptimizeToursRequest;
 import com.google.cloud.optimization.v1.BatchOptimizeToursRequest.AsyncModelConfig;
 import com.google.cloud.optimization.v1.BatchOptimizeToursResponse;
 import com.google.cloud.optimization.v1.FleetRoutingClient;
-import static com.google.common.truth.Truth.assertThat;
 import com.google.protobuf.Duration;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.After;
