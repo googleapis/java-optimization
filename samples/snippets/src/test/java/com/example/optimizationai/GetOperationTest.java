@@ -21,10 +21,8 @@ import static com.google.common.truth.Truth.assertThat;
 import com.google.api.gax.longrunning.OperationFuture;
 import com.google.cloud.optimization.v1.AsyncModelMetadata;
 import com.google.cloud.optimization.v1.BatchOptimizeToursRequest;
-import com.google.cloud.optimization.v1.BatchOptimizeToursRequest.AsyncModelConfig;
 import com.google.cloud.optimization.v1.BatchOptimizeToursResponse;
 import com.google.cloud.optimization.v1.FleetRoutingClient;
-import com.google.protobuf.Duration;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.After;
@@ -57,11 +55,9 @@ public class GetOperationTest {
   @Test
   public void testSyncApi() throws Exception {
     FleetRoutingClient fleetRoutingClient = FleetRoutingClient.create();
-    BatchOptimizeToursRequest request = 
-        BatchOptimizeToursRequest.newBuilder()
-        .setParent(PROJECT_PARENT)
-        .build();
-    OperationFuture<BatchOptimizeToursResponse, AsyncModelMetadata>  response = 
+    BatchOptimizeToursRequest request =
+        BatchOptimizeToursRequest.newBuilder().setParent(PROJECT_PARENT).build();
+    OperationFuture<BatchOptimizeToursResponse, AsyncModelMetadata> response =
         fleetRoutingClient.batchOptimizeToursAsync(request);
 
     GetOperation.getOperation(response.getInitialFuture().get().getName());
