@@ -57,7 +57,8 @@ public class GetOperationTest {
   @Test
   public void testSyncApi() throws Exception {
     FleetRoutingClient fleetRoutingClient = FleetRoutingClient.create();
-    BatchOptimizeToursRequest request = BatchOptimizeToursRequest.newBuilder()
+    BatchOptimizeToursRequest request = 
+        BatchOptimizeToursRequest.newBuilder()
         .setParent(PROJECT_PARENT)
         .build();
     OperationFuture<BatchOptimizeToursResponse, AsyncModelMetadata>  response = 
