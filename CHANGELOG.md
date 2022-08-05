@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.1.6](https://github.com/googleapis/java-optimization/compare/v1.1.5...v1.1.6) (2022-08-05)
+
+
+### Dependencies
+
+* update dependency com.google.cloud:google-cloud-storage to v2.11.2 ([#90](https://github.com/googleapis/java-optimization/issues/90)) ([15659be](https://github.com/googleapis/java-optimization/commit/15659be01c4d97a5080e0a67d2cf59e358c35224))
+
+## [1.1.5](https://github.com/googleapis/java-optimization/compare/v1.1.4...v1.1.5) (2022-08-04)
+
+
+### Dependencies
+
+* update dependency com.google.cloud:google-cloud-storage to v2.11.1 ([#86](https://github.com/googleapis/java-optimization/issues/86)) ([2474353](https://github.com/googleapis/java-optimization/commit/24743539405212de7c77ff3e0b825c4403554445))
+
+## [1.1.4](https://github.com/googleapis/java-optimization/compare/v1.1.3...v1.1.4) (2022-08-04)
+
+
+### Dependencies
+
+* update dependency com.google.cloud:google-cloud-storage to v2.11.0 ([#82](https://github.com/googleapis/java-optimization/issues/82)) ([5b6af42](https://github.com/googleapis/java-optimization/commit/5b6af42f0d57e332059e8d2a60d1e6912b38d7d0))
+
+## [1.1.3](https://github.com/googleapis/java-optimization/compare/v1.1.2...v1.1.3) (2022-08-02)
+
+
+### Dependencies
+
+* update dependency com.google.cloud:google-cloud-shared-dependencies to v3.0.1 ([#78](https://github.com/googleapis/java-optimization/issues/78)) ([60f7383](https://github.com/googleapis/java-optimization/commit/60f738324175aa24a483803edee4d10b74d617e4))
+* update dependency com.google.cloud:google-cloud-storage to v2.10.0 ([#76](https://github.com/googleapis/java-optimization/issues/76)) ([4eec22e](https://github.com/googleapis/java-optimization/commit/4eec22ebd5122057bee1a03a89593c32b6bf9225))
+
 ## [1.1.2](https://github.com/googleapis/java-optimization/compare/v1.1.1...v1.1.2) (2022-07-30)
 
 
