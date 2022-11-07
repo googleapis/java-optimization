@@ -9,6 +9,13 @@ Java idiomatic client for [Cloud Fleet Routing][product-docs].
 - [Client Library Documentation][javadocs]
 
 
+:bus: In October 2022, this library has moved to
+[google-cloud-java/java-optimization](
+https://github.com/googleapis/google-cloud-java/tree/main/java-optimization).
+This repository will be archived in the future.
+Future releases will appear in the new repository (https://github.com/googleapis/google-cloud-java/releases).
+The Maven artifact coordinates (`com.google.cloud:google-cloud-optimization`) remain the same.
+
 ## Quickstart
 
 
@@ -19,20 +26,20 @@ If you are using Maven, add this to your pom.xml file:
 <dependency>
   <groupId>com.google.cloud</groupId>
   <artifactId>google-cloud-optimization</artifactId>
-  <version>1.1.14</version>
+  <version>1.3.0</version>
 </dependency>
 ```
 
 If you are using Gradle without BOM, add this to your dependencies:
 
 ```Groovy
-implementation 'com.google.cloud:google-cloud-optimization:1.1.14'
+implementation 'com.google.cloud:google-cloud-optimization:1.3.0'
 ```
 
 If you are using SBT, add this to your dependencies:
 
 ```Scala
-libraryDependencies += "com.google.cloud" % "google-cloud-optimization" % "1.1.14"
+libraryDependencies += "com.google.cloud" % "google-cloud-optimization" % "1.3.0"
 ```
 
 ## Authentication
